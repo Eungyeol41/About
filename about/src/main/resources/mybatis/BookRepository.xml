@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.silver.about.book.dao.BookDao">
+
+	<sql id="selectWhere">
+		<if test="isCompleted != null and isCompleted != ''">
+			<choose>
+				<when test="isCompleted == 1">
+					AND IS_COMPLETED = 'Y'
+				</when>
+				<when test="isCompleted == 2">
+					AND IS_COMPLETED = 'N'
+				</when>
+				<otherwise>
+					AND (IS_COMPLETED = 'Y' OR IS_COMPLETED = 'N')
+				</otherwise>
+			</choose>
+		</if>
+		<if test="isLikely != null and isLikely != ''">
+			<choose>
+				<when test="isLikely == 1">
+					AND IS_LIKELY = 'Y'
+				</when>
+				<when test="isLikely == 2">
+					AND IS_LIKELY = 'N'
+				</when>
+				<otherwise>
+					AND (IS_LIKELY = 'Y' OR IS_LIKELY = 'N')
+				</otherwise>
+			</choose>
+		</if>
+		<if test="schEtc00 != null and schEtc00 != ''">
+			<if test="schEtc00 == 0">
+				ORDER BY SEQ_NO
+			</if>
+			<if test="schEtc00 == 1">
+				ORDER BY LST_DT DESC
+			</if>
+		</if>
+	</sql>
+
+	<!-- ID 별 전체 List 조회 -->
+	<select id="selectList" parameterType="bookVO" resultType="bookVO">
+		SELECT SEQ_NO           seqNo
+			 , FRST_DT          frstDt
+			 , LST_DT           lstDt
+			 , USER_ID          userId
+			 , TITLE            title
+			 , AUTHOR           author
+			 , GENRE            genre
+			 , PLATFORM         platform
+			 , IS_COMPLETED     isCompleted
+			 , IS_LIKELY        isLikely
+			 , READ_NUM         readNum
+			 , COMPLETED_NUM    completedNum
+			 , MEMO             memo
+		FROM T_NOVEL
+		WHERE USER_ID = #{userId}
+		<include refid="selectWhere" />
+	</select>
+
+	<!-- 선택한 소설 상세보기 -->
+	<select id="selectContents" parameterType="bookVO" resultType="bookVO">
+		SELECT SEQ_NO           seqNo
+			 , FRST_DT          frstDt
+			 , LST_DT           lstDt
+			 , USER_ID          userId
+			 , TITLE            title
+			 , AUTHOR           author
+			 , GENRE            genre
+			 , PLATFORM         platform
+			 , IS_COMPLETED     isCompleted
+			 , IS_LIKELY        isLikely
+			 , READ_NUM         readNum
+			 , COMPLETED_NUM    completedNum
+			 , MEMO             memo
+		FROM T_NOVEL
+		WHERE USER_ID = #{userId}
+		  AND SEQ_NO = #{seqNo}
+	</select>
+
+	<!-- 책 등록하기 -->
+	<insert id="insertContents" parameterType="bookVO">
+		INSERT INTO T_NOVEL (
+			  USER_ID
+			, TITLE
+			, AUTHOR
+			, GENRE
+			, PLATFORM
+			, IS_COMPLETED
+			, READ_NUM
+			, COMPLETED_NUM
+			, MEMO
+		) VALUES (
+			  #{userId}
+			, #{title}
+			, #{author}
+			, #{genre}
+			, #{platform}
+			, #{isCompleted}
+			, #{readNum}
+			, #{completedNum}
+			, #{memo}
+		)
+	</insert>
+
+	<!-- 책 수정하기 -->
+	<update id="updateContents" parameterType="bookVO">
+		/* BookRepository.updateContents */
+		UPDATE T_NOVEL
+		   SET TITLE = #{title}
+		WHERE SEQ_NO = #{seqNo}
+	</update>
+
+	<!-- 책 삭제하기 -->
+	<delete id="deleteContents">
+		/* BookRepository.deleteContents */
+		DELETE FROM T_NOVEL
+		WHERE SEQ_NO = #{seqNo}
+	</delete>
+
+</mapper>
