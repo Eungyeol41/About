@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.awt.print.Book;
 import java.util.List;
 
 @RestController
@@ -35,13 +34,11 @@ public class BookController {
 	public List<BookVO> bookList(
 			@Parameter(description = "사용자 ID") @RequestParam String userId,
 			@Parameter(description = "완독 여부 (전체 : 0 / 완독 : 1 / 읽는 중 : 2)") @RequestParam String isCompleted,
-			@Parameter(description = "좋아요 여부 (전체 : 0 / 좋아요 Y : 1 / 좋아요 N : 2 / 전체)") @RequestParam String isLikely,
 			@Parameter(description = "정렬 조건 (등록순 : 0 / 최신순 : 1)") @RequestParam String schEtc00
 	) {
 		BookVO bookVO = new BookVO();
 		bookVO.setUserId(userId);			// 사용자 ID 
 		bookVO.setIsCompleted(isCompleted); // 완결 여부
-		bookVO.setIsLikely(isLikely); 		// 좋아요 여부
 		bookVO.setSchEtc00(schEtc00);		// 정렬 조건
 
 		return bookDao.selectList(bookVO);
@@ -100,10 +97,11 @@ public class BookController {
 		bookVO.setCompletedNum(completedNum);	// 책 완결 페이지 수
 		bookVO.setMemo(memo);					// 메모
 
-		bookDao.insertContents(bookVO);
+		bookDao.insert(bookVO);
 	}
 
 	// 책 수정
+	// TODO 상의 후 수정 필요
 	@Operation(summary = "책 수정", description = "4. 책 수정", tags = "Book API", responses = {
 			@ApiResponse(responseCode = "200", description = "책 수정 완료")
 	})
@@ -114,7 +112,7 @@ public class BookController {
 		BookVO bookVO = new BookVO();
 		bookVO.setSeqNo(seqNo);
 
-		bookDao.updateContents(bookVO);
+		bookDao.update(bookVO);
 	}
 
 	// 책 삭제
@@ -128,7 +126,7 @@ public class BookController {
 		BookVO bookVO = new BookVO();
 		bookVO.setSeqNo(seqNo);
 
-		bookDao.deleteContents(bookVO);
+		bookDao.delete(bookVO);
 	}
 
 }

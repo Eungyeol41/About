@@ -9,7 +9,7 @@ import java.util.List;
 public interface BookDao {
 	public List<BookVO> selectList(BookVO bookVO);
 	public List<BookVO> selectContents(BookVO bookVO);
-	public void insertContents(BookVO bookVO);
-	public void updateContents(BookVO bookVO);
-	public void deleteContents(BookVO bookVO);
+	public void insert(BookVO bookVO);
+	public void update(BookVO bookVO);
+	public void delete(BookVO bookVO);
 }

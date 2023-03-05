@@ -16,7 +16,7 @@
 				</otherwise>
 			</choose>
 		</if>
-		<if test="isLikely != null and isLikely != ''">
+		<!--<if test="isLikely != null and isLikely != ''">
 			<choose>
 				<when test="isLikely == 1">
 					AND IS_LIKELY = 'Y'
@@ -28,7 +28,7 @@
 					AND (IS_LIKELY = 'Y' OR IS_LIKELY = 'N')
 				</otherwise>
 			</choose>
-		</if>
+		</if>-->
 		<if test="schEtc00 != null and schEtc00 != ''">
 			<if test="schEtc00 == 0">
 				ORDER BY SEQ_NO

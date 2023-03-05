@@ -6,6 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CommonVO {
+	// count 조회
+	private String cnt;
 	// 기타 검색 조건
 	private String schEtc00;
 	// 기타 검색 조건

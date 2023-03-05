@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.silver.about.user.dao.UserDao">
+
+	<!-- 회원 조회 -->
+	<select id="selectContents" parameterType="userVO" resultType="userVO">
+		SELECT SEQ_NO	seqNo
+		     , FRST_DT	frstDt
+		     , LST_DT	lstDt
+		     , ID		id
+		     , USER_NM	userNm
+		     , PW		pw
+		     , EMAIL	email
+		FROM T_USER
+		WHERE ID = #{id}
+		  AND PW = #{pw}
+	</select>
+
+	<!-- 로그인 / ID 중복검사 -->
+	<select id="login" parameterType="userVO" resultType="int">
+		SELECT COUNT(1) cnt
+		FROM T_USER
+		WHERE ID = #{id}
+		<if test="schEtc00 == 'login'">
+		  AND PW = #{pw}
+		</if>
+	</select>
+
+	<!-- 회원가입 -->
+	<insert id="join" parameterType="userVO">
+		INSERT INTO T_USER (
+			  ID
+			, USER_NM
+			, PW
+			, EMAIL
+		) VALUES (
+			, #{id}
+			, #{userNm}
+			, #{pw}
+			, #{email}
+		)
+	</insert>
+
+	<!-- 회원정보 수정 -->
+	<update id="update" parameterType="userVO">
+
+	</update>
+
+	<!-- 회원 탈퇴 -->
+	<delete id="delete">
+		DELETE FROM T_USER
+		WHERE ID = #{id}
+	</delete>
+
+</mapper>
