@@ -1,13 +1,9 @@
 # About demo Project 생성
-### Swagger 연동
-### Mybatis를 이용한 AWS RDS(MySQL) 연동
-### 이메일 인증을 이용한 회원가입
-### 외부로그인 연동
-1. 카카오 로그인
-2. 구글 로그인
-3. 애플 로그인
-
-<hr>
+- ### Swagger 연동
+- ### Mybatis를 이용한 AWS RDS(MySQL) 연동
+- ### 이메일 인증을 이용한 회원가입
+- ### 외부로그인 연동
+   - 카카오 로그인 / 구글 로그인 / 애플 로그인
 
 ## dependency 추가
 1. Mybatis
