@@ -38,4 +38,6 @@ public class BookVO extends CommonVO {
 	private String completedNum;
 	/* 메모 */
 	private String memo;
+	/* 책 읽은 비율 */
+	private String readingRate;
 }

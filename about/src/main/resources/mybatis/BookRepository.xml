@@ -54,6 +54,15 @@
 			 , READ_NUM         readNum
 			 , COMPLETED_NUM    completedNum
 			 , MEMO             memo
+			 , ROUND(READ_NUM / COMPLETED_NUM * 100, 2) readingRate
+		FROM T_NOVEL
+		WHERE USER_ID = #{userId}
+		<include refid="selectWhere" />
+	</select>
+
+	<!-- ID 별 전체 List 개수 Count -->
+	<select id="selectCount" parameterType="bookVO" resultType="int">
+		SELECT COUNT(1) cnt
 		FROM T_NOVEL
 		WHERE USER_ID = #{userId}
 		<include refid="selectWhere" />
@@ -74,6 +83,7 @@
 			 , READ_NUM         readNum
 			 , COMPLETED_NUM    completedNum
 			 , MEMO             memo
+			 , ROUND(READ_NUM / COMPLETED_NUM * 100, 2) readingRate
 		FROM T_NOVEL
 		WHERE USER_ID = #{userId}
 		  AND SEQ_NO = #{seqNo}
