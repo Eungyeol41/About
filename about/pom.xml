@@ -66,6 +66,18 @@
 			<version>3.0.0</version>
 		</dependency>
 		<!-- END : Swagger -->
+		<!-- BGN : Mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>5.2.22.RELEASE</version>
+		</dependency>
+		<!-- END : Mail -->
 	</dependencies>
 
 	<build>
