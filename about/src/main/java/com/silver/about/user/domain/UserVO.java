@@ -24,4 +24,12 @@ public class UserVO extends CommonVO {
 	private String pw;
 	// 사용자 이메일
 	private String email;
+
+	/* E-mail 인증 */
+	// 이메일 주소
+	private String address;
+	// 이메일 제목
+	private String title;
+	// 이메일 내용
+	private String content;
 }
