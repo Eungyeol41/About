@@ -10,11 +10,11 @@ Spring Boot - 웹소설 전용 기록장 '어디까지 봤더라 - about' 어플
 <h2 align='center'>기술 스택</h2>
 <h3 align='center'>개발</h3>
 <p align='center'>
-  <img src="https://img.shields.io/badge/Java 1.8-007396?style=flat-square&logo=Java&logoColor=white" />
-  <img src="https://img.shields.io/badge/Maven-C71A36?style=flat-square&logo=Apache Maven&logoColor=white" />
-  <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=Spring&logoColor=white" />
-  <img src="https://img.shields.io/badge/Spring Boot 2.7.10-6DB33F?style=flat-square&logo=Spring Boot&logoColor=white" />
-  <img src="https://img.shields.io/badge/IntelliJ IDEA-000000?style=flat-square&logo=IntelliJ IDEA&logoColor=white" />
+	<img src="https://img.shields.io/badge/Java 1.8-007396?style=flat-square&logo=Java&logoColor=white" />
+	<img src="https://img.shields.io/badge/Maven-C71A36?style=flat-square&logo=Apache Maven&logoColor=white" />
+	<img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=Spring&logoColor=white" />
+	<img src="https://img.shields.io/badge/Spring Boot 2.7.10-6DB33F?style=flat-square&logo=Spring Boot&logoColor=white" />
+	<img src="https://img.shields.io/badge/IntelliJ IDEA-000000?style=flat-square&logo=IntelliJ IDEA&logoColor=white" />
 </p>
 
 <h3 align='center'>DB</h3>
@@ -31,3 +31,11 @@ Spring Boot - 웹소설 전용 기록장 '어디까지 봤더라 - about' 어플
 	<img src="https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=Postman&logoColor=white" />
 </p>
 
+<!--
+<h3 align='center'>외부 로그인</h3>
+<p align='center'>
+	<img src="https://img.shields.io/badge/Kakao-FFCD00?style=flat-square&logo=Kakao&logoColor=white" />
+	<img src="https://img.shields.io/badge/Google-4285F4?style=flat-square&logo=Google&logoColor=white" />
+	<img src="https://img.shields.io/badge/Apple-000000?style=flat-square&logo=Apple&logoColor=white" />
+</p>
+-->
