@@ -1,5 +1,7 @@
 package com.silver.about.user;
 
+import com.silver.about.common.service.EmailService;
+import com.silver.about.common.service.EncryptService;
 import com.silver.about.user.dao.UserDao;
 import com.silver.about.user.domain.UserVO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,6 +27,12 @@ public class UserController {
 	@Autowired
 	private UserDao userDao;
 
+	@Autowired
+	private EmailService emailService;
+
+	@Autowired
+	private EncryptService encryptService;
+
 	// ID 중복검사
 	@Operation(summary = "ID 중복검사", description = "2. ID 중복검사", tags = "User API", responses = {
 			@ApiResponse(responseCode = "200", description = "성공")
@@ -40,6 +48,20 @@ public class UserController {
 	}
 	
 	// 이메일 인증
+	@Operation(summary = "Email 인증", description = "Email 인증", tags = "User API", responses = {
+			@ApiResponse(responseCode = "200", description = "성공")
+	})
+	@GetMapping(value = "/user/email.do", produces = "application/json;charset=UTF-8")
+	public String email(
+			  @Parameter(description = "사용자 ID") @RequestParam String id
+			, @Parameter(description = "사용자 이름") @RequestParam String userNm
+			, @Parameter(description = "사용자 비밀번호") @RequestParam String pw
+			, @Parameter(description = "사용자 이메일") @RequestParam String email
+	) throws Exception {
+		emailService.sendSimpleMessage(email, id, userNm, pw, email);
+
+		return "S";
+	}
 
 	@Operation(summary = "회원가입", description = "1. 회원가입", tags = "User API", responses = {
 			@ApiResponse(responseCode = "200", description = "회원가입 완료")
@@ -50,12 +72,29 @@ public class UserController {
 			, @Parameter(description = "사용자 이름") @RequestParam String userNm
 			, @Parameter(description = "사용자 비밀번호") @RequestParam String pw
 			, @Parameter(description = "사용자 이메일") @RequestParam String email
+			, @Parameter(description = "이메일 인증 여부 구분값") @RequestParam String schEtc00
 	) {
 		UserVO userVO = new UserVO();
-		userVO.setId(id);
-		userVO.setUserNm(userNm);
-		userVO.setPw(pw); // TODO 암호화 처리 필요
-		userVO.setEmail(email);
+
+		// 이메일 인증에서 넘어왔을 때
+		if("Y".equals(schEtc00)) {
+			// Id, 닉네임, 이메일 복호화
+			String decId = encryptService.decrypt(id);
+			String decUserNm = encryptService.decrypt(userNm);
+			String decEmail = encryptService.decrypt(email);
+
+			userVO.setId(decId);
+			userVO.setUserNm(decUserNm);
+			userVO.setPw(pw);
+			userVO.setEmail(decEmail);
+		} else {
+			// 이메일 인증 하고 오셈 ~
+			// 비밀번호 암호화
+			/*userVO.setId(id);
+			userVO.setUserNm(userNm);
+			userVO.setPw(encryptService.encrypt(pw));
+			userVO.setEmail(email);*/
+		}
 
 		userDao.join(userVO);
 	}
@@ -85,7 +124,7 @@ public class UserController {
 	) {
 		UserVO userVO = new UserVO();
 		userVO.setId(id);
-		userVO.setPw(pw); // TODO 암호화 처리 필요
+		userVO.setPw(encryptService.encrypt(pw));
 
 		return userDao.selectContents(userVO);
 	}
@@ -101,7 +140,7 @@ public class UserController {
 	) {
 		UserVO userVO = new UserVO();
 		userVO.setId(id);
-		userVO.setPw(pw); // TODO 암호화 처리 필요
+		userVO.setPw(encryptService.encrypt(pw));
 
 		userVO.setSchEtc00("login");
 

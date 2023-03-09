@@ -34,7 +34,7 @@
 			, PW
 			, EMAIL
 		) VALUES (
-			, #{id}
+			  #{id}
 			, #{userNm}
 			, #{pw}
 			, #{email}

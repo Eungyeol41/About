@@ -73,6 +73,13 @@
 			<version>2.3.12.RELEASE</version>
 		</dependency>
 		<!-- END : Mail -->
+		<!-- BGN : Jasypt -->
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt</artifactId>
+			<version>1.9.3</version>
+		</dependency>
+		<!-- END : Jasypt -->
 	</dependencies>
 
 	<build>
