@@ -13,8 +13,25 @@
 3. Swagger-ui
    - <i>io.springfox > springfox-boot-starter</i>
    - <i>io.springfox > springfox-swagger-ui</i>
+4. Mail
+   - <i>org.springframework.boot > spring-boot-starter-mail</i>
+5. Jasypt
+   - <i>org.jasypt > jasypt</i>
 
 ## Swagger 이용
 1. SwaggerConfig.class 생성
 2. Controller 에서 Swagger API 작성
 3. 주소 뒤에 `/swagger-ui/` 붙이고 API 확인 가능
+
+## 회원가입 시 이메일 인증
+1. EmailConfig.class 생성
+2. `JavaMailSender`를 이용하여 이메일 보내기
+3. 이메일에서 링크 클릭 시 바로 회원가입 적용
+
+[//]: # (## 외부로그인)
+
+[//]: # (1. 카카오 로그인)
+
+[//]: # (2. 구글 로그인)
+
+[//]: # (3. 애플 로그인)
