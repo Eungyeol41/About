@@ -40,6 +40,20 @@
 		</dependency>
 
 		<!-- dependency 추가 -->
+		<!-- BGN : Mybatis -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<!-- END : Mybatis -->
+		<!-- BGN : MySQL -->
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>8.0.32</version>
+		</dependency>
+		<!-- END : MySQL -->
 		<!-- BGN : Swagger -->
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -52,6 +66,13 @@
 			<version>3.0.0</version>
 		</dependency>
 		<!-- END : Swagger -->
+		<!-- BGN : Mail -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+			<version>2.3.12.RELEASE</version>
+		</dependency>
+		<!-- END : Mail -->
 		<!-- BGN : Jasypt -->
 		<dependency>
 			<groupId>org.jasypt</groupId>
