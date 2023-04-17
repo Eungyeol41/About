@@ -29,3 +29,25 @@
 1. EmailConfig.class 생성
 2. `JavaMailSender`를 이용하여 이메일 보내기
 3. 이메일에서 링크 클릭 시 바로 회원가입 적용
+<hr style="margin-top: 2rem;">
+<h2 align='center'>기술 스택</h2>
+<h3 align='center'>개발</h3>
+<p align='center'>
+	<img src="https://img.shields.io/badge/Java 17-007396?style=flat-square&logo=Java&logoColor=white" />
+	<img src="https://img.shields.io/badge/Maven-C71A36?style=flat-square&logo=Apache Maven&logoColor=white" />
+	<img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=Spring&logoColor=white" />
+	<img src="https://img.shields.io/badge/Spring Boot 3.0.5-6DB33F?style=flat-square&logo=Spring Boot&logoColor=white" />
+	<img src="https://img.shields.io/badge/IntelliJ IDEA-000000?style=flat-square&logo=IntelliJ IDEA&logoColor=white" />
+</p>
+
+<h3 align='center'>DB</h3>
+<p align='center'>
+	<img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=MongoDB&logoColor=white" />
+</p>
+
+<h3 align='center'>문서/협업</h3>
+<p align='center'>
+	<img src="https://img.shields.io/badge/Swagger-85EA2D?style=flat-square&logo=Swagger&logoColor=white" />
+	<img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white" />
+	<img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=Notion&logoColor=white" />
+</p>
